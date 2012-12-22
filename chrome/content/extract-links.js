@@ -46,17 +46,17 @@ function webdeveloper_generateDocument(url)
 
 function arrayRemoveDuplicates(a)
 {
-	a = a.sort();
-	var a2 = new Array();
-	a2.push(a[0]);
-	for (i = 1; i < a.length; i++)
-	{	
-		if (a[i] != a[i-1])
-		{
-			a2.push(a[i]);
-		}
-	}
-	return a2;
+    a = a.sort();
+    var a2 = new Array();
+    a2.push(a[0]);
+    for (i = 1; i < a.length; i++)
+    {   
+        if (a[i] != a[i-1])
+        {
+            a2.push(a[i]);
+        }
+    }
+    return a2;
 }
 
 
@@ -64,89 +64,89 @@ function arrayRemoveDuplicates(a)
 // links = array of links
 function displayLinks(d, bodyElement, links)
 {
-	headerElement = d.createElement("h2");
-	headerElement.appendChild(d.createTextNode("Links"));
-	bodyElement.appendChild(headerElement);
+    headerElement = d.createElement("h2");
+    headerElement.appendChild(d.createTextNode("Links"));
+    bodyElement.appendChild(headerElement);
 
-	for (i = 0; i < links.length; i++)
-	{	
-		linkElement   = d.createElement("a");
-		linkElement.setAttribute("href", links[i]);
-		linkElement.appendChild(d.createTextNode(links[i]));
+    for (i = 0; i < links.length; i++)
+    {   
+        linkElement   = d.createElement("a");
+        linkElement.setAttribute("href", links[i]);
+        linkElement.appendChild(d.createTextNode(links[i]));
 
-		bodyElement.appendChild(d.createElement("br"));
-		bodyElement.appendChild(linkElement);
-	}
+        bodyElement.appendChild(d.createElement("br"));
+        bodyElement.appendChild(linkElement);
+    }
 
 }
 
 function extractLinksGo() {
 
-	// extract the links
-	var links = new Array();
-	for (i = 0; i < content.document.links.length; i++)
-	{	
-		links.push(content.document.links[i].toString());
-	}
+    // extract the links
+    var links = new Array();
+    for (i = 0; i < content.document.links.length; i++)
+    {   
+        links.push(content.document.links[i].toString());
+    }
 
-	// open tab
-	d =  webdeveloper_generateDocument("");
-	d.title = "Extracted Links";
-	var bodyElement = webdeveloper_getDocumentBodyElement(d);
+    // open tab
+    d =  webdeveloper_generateDocument("");
+    d.title = "Extracted Links";
+    var bodyElement = webdeveloper_getDocumentBodyElement(d);
 
-	// find embedded links
-	var embedded_links = new Array();
-	for (i = 0; i < links.length; i++)
-	{	
-		var link = links[i];
-		link = link.replace(/%3[Aa]/g,":");
-		link = link.replace(/%2[fF]/g, "\/");
-		var re  =  /.(https?:\/\/.*)/g;
-		var a = link.match(re);
-		if (a !== null && a.length > 0)
-		{
-			embedded_links.push(a[0].substring(1));
-		}
-	}
-	links = links.concat(embedded_links);
+    // find embedded links
+    var embedded_links = new Array();
+    for (i = 0; i < links.length; i++)
+    {   
+        var link = links[i];
+        link = link.replace(/%3[Aa]/g,":");
+        link = link.replace(/%2[fF]/g, "\/");
+        var re  =  /.(https?:\/\/.*)/g;
+        var a = link.match(re);
+        if (a !== null && a.length > 0)
+        {
+            embedded_links.push(a[0].substring(1));
+        }
+    }
+    links = links.concat(embedded_links);
 
-	//  remove duplicates
-	links = arrayRemoveDuplicates(links);
+    //  remove duplicates
+    links = arrayRemoveDuplicates(links);
 
-	// display links
-	displayLinks(d, bodyElement, links);
+    // display links
+    displayLinks(d, bodyElement, links);
 
-	// find domains
-	
-	var domains = new Array();
-	for (i = 0; i < links.length; i++)
-	{	
-		var link = links[i];
-		var re  =  /https?:\/\/([^\/]*)\/?/g;
-		var a = link.match(re);
-		if (a !== null && a.length > 0)
-		{
-			domains = domains.concat(a);
-		}
+    // find domains
 
-	}
+    var domains = new Array();
+    for (i = 0; i < links.length; i++)
+    {   
+        var link = links[i];
+        var re  =  /https?:\/\/([^\/]*)\/?/g;
+        var a = link.match(re);
+        if (a !== null && a.length > 0)
+        {
+            domains = domains.concat(a);
+        }
 
-	// remove duplicates
-	domains = arrayRemoveDuplicates(domains);
+    }
 
-	// display domains
-	headerElement = d.createElement("h2");
-	headerElement.appendChild(d.createTextNode("Domains"));
-	bodyElement.appendChild(headerElement);
+    // remove duplicates
+    domains = arrayRemoveDuplicates(domains);
 
-	for (i = 0; i < domains.length; i++)
-	{	
-		linkElement   = d.createElement("a");
-		linkElement.setAttribute("href", domains[i]);
-		linkElement.appendChild(d.createTextNode(domains[i]));
+    // display domains
+    headerElement = d.createElement("h2");
+    headerElement.appendChild(d.createTextNode("Domains"));
+    bodyElement.appendChild(headerElement);
 
-		bodyElement.appendChild(d.createElement("br"));
-		bodyElement.appendChild(linkElement);
-	}
+    for (i = 0; i < domains.length; i++)
+    {   
+        linkElement   = d.createElement("a");
+        linkElement.setAttribute("href", domains[i]);
+        linkElement.appendChild(d.createTextNode(domains[i]));
+
+        bodyElement.appendChild(d.createElement("br"));
+        bodyElement.appendChild(linkElement);
+    }
 }
 
