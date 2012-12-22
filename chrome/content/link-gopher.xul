@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="sample">
+  <script type="application/x-javascript" src="extract-links.js"/>
+  <statusbar id="status-bar">
+    <statusbarpanel id="link-gopher-panel" label="Extract Links" context="statusbar-menu" onclick="extractLinksGo();"/>
+    <popup id="statusbar-menu" position="before_end">
+      <menuitem id="extractlinks-go" label="Extract links" oncommand="extractLinksGo();"/>
+    </popup>
+  </statusbar>
+</overlay>

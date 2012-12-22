@@ -1,0 +1,2 @@
+content     link-gopher    chrome/content/
+overlay chrome://browser/content/browser.xul chrome://link-gopher/content/link-gopher.xul
