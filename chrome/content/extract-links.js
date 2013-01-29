@@ -70,7 +70,7 @@ function linkgopher_arrayRemoveDuplicates(a)
     var a2 = new Array();
     a2.push(a[0]);
     for (i = 1; i < a.length; i++)
-    {   
+    {
         if (a[i] != a[i-1])
         {
             a2.push(a[i]);
@@ -91,7 +91,7 @@ function linkgopher_displayLinks(doc, bodyElement, links)
     bodyElement.appendChild(headerElement);
 
     for (i = 0; i < links.length; i++)
-    {   
+    {
         var linkElement   = doc.createElement("a");
         linkElement.setAttribute("href", links[i]);
         linkElement.appendChild(doc.createTextNode(links[i]));
@@ -112,7 +112,7 @@ function extractLinksMain(searchstring) {
     // extract the links
     var links = new Array();
     for (i = 0; i < content.document.links.length; i++)
-    {   
+    {
         var thisLink = content.document.links[i].toString();
         if("" == searchstring || thisLink.indexOf(searchstring) > -1)
             links.push(content.document.links[i].toString());
@@ -126,7 +126,7 @@ function extractLinksMain(searchstring) {
     // find embedded links
     var embedded_links = new Array();
     for (i = 0; i < links.length; i++)
-    {   
+    {
         var link = links[i];
         link = link.replace(/%3[Aa]/g,":");
         link = link.replace(/%2[fF]/g, "\/");
@@ -148,7 +148,7 @@ function extractLinksMain(searchstring) {
     // find domains
     var domains = new Array();
     for (var i = 0; i < links.length; i++)
-    {   
+    {
         var link = links[i];
         var re  =  /https?:\/\/([^\/]*)\/?/g;
         var a = link.match(re);
@@ -167,7 +167,7 @@ function extractLinksMain(searchstring) {
     bodyElement.appendChild(headerElement);
 
     for (var i = 0; i < domains.length; i++)
-    {   
+    {
         var linkElement = doc.createElement("a");
         linkElement.setAttribute("href", domains[i]);
         linkElement.appendChild(doc.createTextNode(domains[i]));
@@ -190,7 +190,7 @@ function linkgopher_callbackExtractAllLinks() {
 // The filtering is based on code from Kevin Pease.
 function linkgopher_callbackExtractLinksByFilter() {
     var searchstring = prompt('Enter a string of characters to search for within the link.  Links without this string will be ignored.');
-    
+
     if (!searchstring || 0 == searchstring.length)
     {
         return;
@@ -206,5 +206,5 @@ function linkgopher_callbackExtractLinksByFilter() {
 function linkgopher_callbackAbout() {
     // Add tab, then make active
     gBrowser.selectedTab = gBrowser.addTab("http://sites.google.com/site/linkgopher/");
-    
+
 }
