@@ -1,36 +1,14 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://link-gopher/skin/button.css" type="text/css"?>
-<overlay id="link-gopher-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="link-gopher-overlay">
   <script type="application/x-javascript" src="chrome://link-gopher/content/extract-links.js"/>
-
-
-		<toolbarpalette id="BrowserToolbarPalette">
-
-			<toolbarbutton id="link-gopher-button"
-			label="Link Gopher" 
-			tooltiptext="Link Gopher" 
-			class="chromeclass-toolbar-additional toolbarbutton-1" 
-			type="menu">
-
-				<menupopup id="link-gopher-menu" orient="vertical">
-
-					<menuitem id="extract-all-links"
-					label="Extract All Links" 
-					accesskey="E" 
-					oncommand="linkgopher_callbackExtractAllLinks();"/>
-
-					<menuitem id="extract-links-by-filter" 
-					label="Extract Links by Filter" 
-					accesskey="F" 
-					oncommand="linkgopher_callbackExtractLinksByFilter();"/>
-
-					<menuitem id="about-link-gopher"   
-					accesskey="A" 
-					label="About Link Gopher"       
-					oncommand="linkgopher_callbackAbout();"/> 
-
-				</menupopup>
-		</toolbarbutton>		 
-	</toolbarpalette>
+  <toolbarpalette id="BrowserToolbarPalette">
+    <toolbarbutton id="link-gopher-button" label="Link Gopher" tooltiptext="Link Gopher" class="chromeclass-toolbar-additional toolbarbutton-1" type="menu">
+      <menupopup id="link-gopher-menu" orient="vertical">
+        <menuitem id="extract-all-links" label="Extract All Links" accesskey="E" oncommand="linkgopher_callbackExtractAllLinks();"/>
+        <menuitem id="extract-links-by-filter" label="Extract Links by Filter" accesskey="F" oncommand="linkgopher_callbackExtractLinksByFilter();"/>
+        <menuitem id="about-link-gopher" accesskey="A" label="About Link Gopher" oncommand="linkgopher_callbackAbout();"/>
+      </menupopup>
+    </toolbarbutton>
+  </toolbarpalette>
 </overlay>
