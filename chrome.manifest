@@ -1,2 +1,8 @@
 content     link-gopher    chrome/content/
+
+skin	link-gopher	classic/1.0 chrome/skin/
+
 overlay chrome://browser/content/browser.xul chrome://link-gopher/content/link-gopher.xul
+
+style chrome://global/content/customizeToolbar.xul chrome://link-gopher/skin/button.css
+locale	link-gopher	en-US	locale/en-US/

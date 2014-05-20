@@ -66,17 +66,17 @@ function webdeveloper_generateDocument(url)
 
 function linkgopher_arrayRemoveDuplicates(a)
 {
-    var a = a.sort();
-    var a2 = new Array();
-    a2.push(a[0]);
-    for (i = 1; i < a.length; i++)
-    {
-        if (a[i] != a[i-1])
-        {
-            a2.push(a[i]);
-        }
-    }
-    return a2;
+	var a = a.sort();
+	var a2 = new Array();
+	a2.push(a[0]);
+	for (i = 1; i < a.length; i++)
+	{	
+		if (a[i] != a[i-1])
+		{
+			a2.push(a[i]);
+		}
+	}
+	return a2;
 }
 
 // purpose: generate list of links in a given HTML document
@@ -86,19 +86,19 @@ function linkgopher_arrayRemoveDuplicates(a)
 //  links = array of links
 function linkgopher_displayLinks(doc, bodyElement, links)
 {
-    var headerElement = doc.createElement("h2");
-    headerElement.appendChild(doc.createTextNode("Links"));
-    bodyElement.appendChild(headerElement);
+	var headerElement = doc.createElement("h2");
+	headerElement.appendChild(doc.createTextNode("Links"));
+	bodyElement.appendChild(headerElement);
 
-    for (i = 0; i < links.length; i++)
-    {
-        var linkElement   = doc.createElement("a");
-        linkElement.setAttribute("href", links[i]);
-        linkElement.appendChild(doc.createTextNode(links[i]));
+	for (i = 0; i < links.length; i++)
+	{	
+		var linkElement   = doc.createElement("a");
+		linkElement.setAttribute("href", links[i]);
+		linkElement.appendChild(doc.createTextNode(links[i]));
 
-        bodyElement.appendChild(doc.createElement("br"));
-        bodyElement.appendChild(linkElement);
-    }
+		bodyElement.appendChild(doc.createElement("br"));
+		bodyElement.appendChild(linkElement);
+	}
 
 }
 
@@ -109,79 +109,79 @@ function linkgopher_displayLinks(doc, bodyElement, links)
 //   searchstring: blank ("") means no filtering, otherwise look for this string
 function extractLinksMain(searchstring) {
 
-    // extract the links
-    var links = new Array();
-    for (i = 0; i < content.document.links.length; i++)
-    {
-        var thisLink = content.document.links[i].toString();
-        if("" == searchstring || thisLink.indexOf(searchstring) > -1)
-            links.push(content.document.links[i].toString());
-    }
+	// extract the links
+	var links = new Array();
+	for (i = 0; i < content.document.links.length; i++)
+	{	
+		var thisLink = content.document.links[i].toString();
+		if("" == searchstring || thisLink.indexOf(searchstring) > -1)
+			links.push(content.document.links[i].toString());
+	}
 
-    // open tab
-    var doc =  webdeveloper_generateDocument("");
-    doc.title = "Extracted Links";
-    var bodyElement = webdeveloper_getDocumentBodyElement(doc);
+	// open tab
+	var doc =  webdeveloper_generateDocument("");
+	doc.title = "Extracted Links";
+	var bodyElement = webdeveloper_getDocumentBodyElement(doc);
 
-    // find embedded links
-    var embedded_links = new Array();
-    for (i = 0; i < links.length; i++)
-    {
-        var link = links[i];
-        link = link.replace(/%3[Aa]/g,":");
-        link = link.replace(/%2[fF]/g, "\/");
-        var re  =  /.(https?:\/\/.*)/g;
-        var a = link.match(re);
-        if (a !== null && a.length > 0)
-        {
-            embedded_links.push(a[0].substring(1));
-        }
-    }
-    var links = links.concat(embedded_links);
+	// find embedded links
+	var embedded_links = new Array();
+	for (i = 0; i < links.length; i++)
+	{	
+		var link = links[i];
+		link = link.replace(/%3[Aa]/g,":");
+		link = link.replace(/%2[fF]/g, "\/");
+		var re  =  /.(https?:\/\/.*)/g;
+		var a = link.match(re);
+		if (a !== null && a.length > 0)
+		{
+			embedded_links.push(a[0].substring(1));
+		}
+	}
+	var links = links.concat(embedded_links);
 
-    //  remove duplicates
-    var links = linkgopher_arrayRemoveDuplicates(links);
+	//  remove duplicates
+	var links = linkgopher_arrayRemoveDuplicates(links);
 
-    // display links
-    linkgopher_displayLinks(doc, bodyElement, links);
+	// display links
+	linkgopher_displayLinks(doc, bodyElement, links);
 
-    // find domains
-    var domains = new Array();
-    for (var i = 0; i < links.length; i++)
-    {
-        var link = links[i];
-        var re  =  /https?:\/\/([^\/]*)\/?/g;
-        var a = link.match(re);
-        if (a !== null && a.length > 0)
-        {
-            domains = domains.concat(a);
-        }
-    }
+	// find domains
+	var domains = new Array();
+	for (var i = 0; i < links.length; i++)
+	{	
+		var link = links[i];
+		var re  =  /https?:\/\/([^\/]*)\/?/g;
+		var a = link.match(re);
+		if (a !== null && a.length > 0)
+		{
+			domains = domains.concat(a);
+		}
+	}
 
-    // remove duplicates
-    var domains = linkgopher_arrayRemoveDuplicates(domains);
+	// remove duplicates
+	var domains = linkgopher_arrayRemoveDuplicates(domains);
 
-    // display domains
-    var headerElement = doc.createElement("h2");
-    headerElement.appendChild(doc.createTextNode("Domains"));
-    bodyElement.appendChild(headerElement);
+	// display domains
+	var headerElement = doc.createElement("h2");
+	headerElement.appendChild(doc.createTextNode("Domains"));
+	bodyElement.appendChild(headerElement);
 
-    for (var i = 0; i < domains.length; i++)
-    {
-        var linkElement = doc.createElement("a");
-        linkElement.setAttribute("href", domains[i]);
-        linkElement.appendChild(doc.createTextNode(domains[i]));
+	for (var i = 0; i < domains.length; i++)
+	{	
+		var linkElement = doc.createElement("a");
+		linkElement.setAttribute("href", domains[i]);
+		linkElement.appendChild(doc.createTextNode(domains[i]));
 
 
-        bodyElement.appendChild(doc.createElement("br"));
-        bodyElement.appendChild(linkElement);
-    }
+		bodyElement.appendChild(doc.createElement("br"));
+		bodyElement.appendChild(linkElement);
+	}
 }
 
 
 // The common function called from XUL.
 function linkgopher_callbackExtractAllLinks() {
-    extractLinksMain("");
+	extractLinksMain("");
 
 }
 
@@ -189,14 +189,14 @@ function linkgopher_callbackExtractAllLinks() {
 // Called from XUL.  Allows filtering.
 // The filtering is based on code from Kevin Pease.
 function linkgopher_callbackExtractLinksByFilter() {
-    var searchstring = prompt('Enter a string of characters to search for within the link.  Links without this string will be ignored.');
+	var searchstring = prompt('Enter a string of characters to search for within the link.  Links without this string will be ignored.');
+	
+	if (!searchstring || 0 == searchstring.length)
+	{
+		return;
+	}
 
-    if (!searchstring || 0 == searchstring.length)
-    {
-        return;
-    }
-
-    extractLinksMain(searchstring);
+	extractLinksMain(searchstring);
 
 }
 
@@ -204,7 +204,7 @@ function linkgopher_callbackExtractLinksByFilter() {
 
 // Called from XUL to show usage instructions and support info.
 function linkgopher_callbackAbout() {
-    // Add tab, then make active
-    gBrowser.selectedTab = gBrowser.addTab("http://sites.google.com/site/linkgopher/");
-
+	// Add tab, then make active
+	gBrowser.selectedTab = gBrowser.addTab("http://sites.google.com/site/linkgopher/");
+	
 }
