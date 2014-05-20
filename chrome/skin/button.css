@@ -1,0 +1,25 @@
+
+#link-gopher-button  {
+    list-style-image: url(link-gopher16.png);
+}
+#link-gopher-button[cui-areatype="menu-panel"],
+toolbarpaletteitem[place="palette"] > #zoom-buttons-enlarge {
+    list-style-image: url(link-gopher32.png);
+}
+
+/* High-resolution displays */
+@media (min-resolution: 2dppx) {
+    #link-gopher-button {
+        list-style-image: url(link-gopher32.png);
+    }
+    #link-gopher-button[cui-areatype="menu-panel"],
+    toolbarpaletteitem[place="palette"] > #zoom-buttons-enlarge {
+        list-style-image: url(link-gopher64.png);
+    }
+}
+
+ #customization-palette #link-gopher-button dropmarker {
+display: none;
+
+}
+	
