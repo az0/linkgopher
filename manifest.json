@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Link Gopher",
-  "version": "2.0beta1",
+  "version": "2.0b",
   "description": "Extracts and collates links from web pages",
   "default_locale": "en",
   "homepage_url": "https://sites.google.com/site/linkgopher/",
