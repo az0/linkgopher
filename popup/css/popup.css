@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container > button {
+  white-space: nowrap;
+}
+.container > button:not(:last-child) {
+  margin-bottom: .5em;
+}

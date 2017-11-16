@@ -1,0 +1,20 @@
+#links:not(:empty)::before,
+#domains:not(:empty)::before {
+  content: attr(data-content);
+  display: block;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+#domains {
+  margin-top: 2em;
+}
+
+#message::before {
+  content: attr(data-content);
+}
+
+#links:not(:empty) ~ #message,
+#domains:not(:empty) ~ #message {
+  display: none;
+}

@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "Link Gopher",
+  "version": "2.0beta1",
+  "description": "Extracts and collates links from web pages",
+  "default_locale": "en",
+  "homepage_url": "https://sites.google.com/site/linkgopher/",
+
+  "icons": {
+    "16": "icons/link-gopher-16.png",
+    "32": "icons/link-gopher-32.png",
+    "64": "icons/link-gopher-64.png"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "linkgopher@oooninja.com",
+      "strict_min_version": "45.0"
+    }
+  },
+
+  "permissions": [
+    "tabs",
+    "<all_urls>"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/link-gopher-32.png",
+    "default_title": "Linkgopher",
+    "default_popup": "popup/popup.html"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "askPattern": {
+    "message": "Enter a string of characters to search for within the link.  Links without this string will be ignored.",
+    "description": "none"
+  },
+
+  "pleaseWait": {
+    "message": "Please wait...",
+    "description": "none"
+  },
+
+  "links": {
+    "message": "Links",
+    "description": "none"
+  },
+
+  "domains": {
+    "message": "Domains",
+    "description": "none"
+  },
+
+  "noMatches": {
+    "message": "No matches",
+    "description": "none"
+  },
+
+  "extractAll": {
+    "message": "Extract All Links",
+    "description": "none"
+  },
+
+  "extractSome": {
+    "message": "Extract Links by Filter",
+    "description": "none"
+  },
+
+  "aboutLinkGopher": {
+    "message": "About Link Gopher",
+    "description": "none"
+  }
+}
