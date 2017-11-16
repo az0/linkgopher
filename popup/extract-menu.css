@@ -1,0 +1,16 @@
+html, body {
+  width: 200px;
+}
+
+.hidden {
+  display: none;
+}
+
+.button{
+width: 90%;
+}
+
+.filter{
+	width: 80%;
+	margin-bottom: 5px;
+}
