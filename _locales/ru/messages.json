@@ -1,0 +1,46 @@
+{
+  "askPattern": {
+    "message": "Введите строку символов для поиска в ссылке. Ссылки без этой строки будут игнорироваться.",
+    "description": "none"
+  },
+
+  "pleaseWait": {
+    "message": "Пожалуйста, подождите...",
+    "description": "none"
+  },
+
+  "nolinks": {
+    "message": "Нет ссылок",
+    "description": "none"
+  },
+
+  "links": {
+    "message": "Ссылки",
+    "description": "none"
+  },
+
+  "domains": {
+    "message": "Домены",
+    "description": "none"
+  },
+
+  "noMatches": {
+    "message": "Нет совпадений",
+    "description": "none"
+  },
+
+  "extractAll": {
+    "message": "Извлечение всех ссылок",
+    "description": "none"
+  },
+
+  "extractSome": {
+    "message": "Извлечение ссылок по фильтру",
+    "description": "none"
+  },
+
+  "aboutLinkGopher": {
+    "message": "О Link Gopher",
+    "description": "none"
+  }
+}
