@@ -24,9 +24,22 @@ function onMessage(message, sender, sendResponse) {
  */
 function extractLinks() {
   const links = [];
+  var doc_links;
 
-  for (let index = 0; index < document.links.length; index++) {
-    links.push(decodeURI(document.links[index].href));
+  const sel = document.getSelection();
+
+  switch(sel.type) {
+    case 'Range':
+      doc_links = Array.from(document.links).filter(link => sel.containsNode(link, true));
+      break;
+    default:
+      doc_links = document.links;
+  }
+
+  for (let index = 0; index < doc_links.length; index++) {
+    links.push({'href': decodeURI(doc_links[index].href),
+                'text': doc_links[index].textContent
+               });
   }
 
   return links.length ? links : null;
