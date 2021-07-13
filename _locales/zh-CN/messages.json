@@ -1,11 +1,11 @@
 {
   "extensionName": {
-    "message": "链接提取"
+    "message": "链接提取",
     "description": "none"
   },
 
   "extensionDescription": {
-    "message": "从网页提取所有链接"
+    "message": "从网页提取所有链接",
     "description": "none"
   },
 

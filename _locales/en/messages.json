@@ -1,11 +1,11 @@
 {
   "extensionName": {
-    "message": "Link Gopher"
+    "message": "Link Gopher",
     "description": "none"
   },
 
   "extensionDescription": {
-    "message": "Extracts and collates links from web pages"
+    "message": "Extracts and collates links from web pages",
     "description": "none"
   },
 
