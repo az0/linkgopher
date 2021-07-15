@@ -1,51 +1,51 @@
 {
   "extensionName": {
-    "message": "Link Gopher",
+    "message": "链接提取",
     "description": "none"
   },
 
   "extensionDescription": {
-    "message": "Extracts and collates links from web pages",
+    "message": "从网页提取所有链接",
     "description": "none"
   },
 
   "askPattern": {
-    "message": "Enter a string of characters to search for within the link.  Links without this string will be ignored.",
+    "message": "输入链接提取关键字，不包含关键字的链接将被忽略。",
     "description": "none"
   },
 
   "pleaseWait": {
-    "message": "Please wait...",
+    "message": "请稍候...",
     "description": "none"
   },
 
   "links": {
-    "message": "Links",
+    "message": "链接",
     "description": "none"
   },
 
   "domains": {
-    "message": "Domains",
+    "message": "域名",
     "description": "none"
   },
 
   "noMatches": {
-    "message": "No matches",
+    "message": "无匹配",
     "description": "none"
   },
 
   "extractAll": {
-    "message": "Extract All Links",
+    "message": "提取所有链接",
     "description": "none"
   },
 
   "extractSome": {
-    "message": "Extract Links by Filter",
+    "message": "根据关键字提取链接",
     "description": "none"
   },
 
   "aboutLinkGopher": {
-    "message": "About Link Gopher",
+    "message": "关于 Link Gopher",
     "description": "none"
   }
 }
