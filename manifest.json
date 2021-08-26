@@ -28,5 +28,17 @@
     "default_icon": "icons/link-gopher-32.png",
     "default_title": "__MSG_extensionName__",
     "default_popup": "popup/popup.html"
+  },
+
+  "background": {
+		"page": "commands/commands.html"
+  },
+  "commands": {
+    "extarct-all": {
+      "description": "__MSG_extractAll__"
+    },
+    "extract-some": {
+      "description": "__MSG_extractSome__"
+    }
   }
 }
