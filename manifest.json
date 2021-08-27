@@ -34,7 +34,7 @@
 		"page": "commands/commands.html"
   },
   "commands": {
-    "extarct-all": {
+    "extract-all": {
       "description": "__MSG_extractAll__"
     },
     "extract-some": {

@@ -3,7 +3,7 @@
 import { handler } from '../popup/js/functions.js';
 
 browser.commands.onCommand.addListener(function (command) {
-    if (command === "extarct-all") {
+    if (command === "extract-all") {
       handler(false);
     }
 
