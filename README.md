@@ -12,6 +12,6 @@ To download and install the latest release:
 There is [brief documentation](https://sites.google.com/site/linkgopher/Home)
 
 ## License
-Copyright (c) 2008, 2009, 2014, 2017 by Andrew Ziem. All rights reserved.
+Copyright (c) 2008, 2009, 2014, 2017, 2021 by Andrew Ziem. All rights reserved.
 
 Licensed under the [GNU General Public License version 3](https://www.gnu.org/licenses/gpl-3.0.en.html) or later
