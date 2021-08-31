@@ -1,4 +1,14 @@
 {
+  "extensionName": {
+    "message": "Link Gopher",
+    "description": "none"
+  },
+
+  "extensionDescription": {
+    "message": "Extract links",
+    "description": "none"
+  },
+
   "askPattern": {
     "message": "Введите строку символов для поиска в ссылке. Ссылки без этой строки будут игнорироваться.",
     "description": "none"
