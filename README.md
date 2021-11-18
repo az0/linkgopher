@@ -1,6 +1,6 @@
 # Link Gopher
 
-Link Gopher is an web browser extension: it extracts all links from web page, sorts them, removes duplicates, and displays them in a new tab for inspection or copy and paste into other systems.
+Link Gopher is a web browser extension: it extracts all links from web page, sorts them, removes duplicates, and displays them in a new tab for inspection or copy and paste into other systems.
 
 ## Download
 To download and install the latest release:
