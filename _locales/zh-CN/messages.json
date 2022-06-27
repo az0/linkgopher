@@ -39,6 +39,11 @@
     "description": "none"
   },
 
+  "extractDomains": {
+    "message": "只提取域名",
+    "description": "none"
+  },
+
   "extractSome": {
     "message": "根据关键字提取链接",
     "description": "none"

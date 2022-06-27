@@ -3,6 +3,10 @@ document.getElementById('extract-all').addEventListener('click', event => {
   handler(false).then(() => window.close());
 });
 
+document.getElementById('extract-domains').addEventListener('click', event => {
+  handler(false, true).then(() => window.close());
+});
+
 document.getElementById('extract-some').addEventListener('click', event => {
   handler(true).then(() => window.close());
 });
@@ -15,6 +19,7 @@ document.getElementById('about-linkgopher').addEventListener('click', event => {
 // Localization.
 [
   {id: 'extract-all', messageId: 'extractAll'},
+  {id: 'extract-domains', messageId: 'extractDomains'},
   {id: 'extract-some', messageId: 'extractSome'},
   {id: 'about-linkgopher', messageId: 'aboutLinkGopher'}
 ].forEach(item => {
@@ -25,15 +30,16 @@ document.getElementById('about-linkgopher').addEventListener('click', event => {
 /**
  * @function handler
  * @param {boolean} filtering
+ * @param {boolean} onlyDomains
  */
-function handler(filtering = false) {
+function handler(filtering = false, onlyDomains = false) {
   var tabId;
 
   return getCurrentTab()
     .then(items => { tabId = items[0].id; return injectScript(tabId); })
     .then(item => {
       const url = `${chrome.extension.getURL('browser/linkgopher.html')}?` +
-                  `tabId=${tabId}&filtering=${filtering}`;
+        `tabId=${tabId}&filtering=${filtering}&onlyDomains=${onlyDomains}`;
       return openTab(url);
     })
     .catch(error => window.alert(error));

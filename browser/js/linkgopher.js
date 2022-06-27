@@ -6,15 +6,16 @@ const reBaseURL = /(^\w+:\/\/[^\/]+)|(^[A-Za-z0-9.-]+)\/|(^[A-Za-z0-9.-]+$)/;
 const tabId = parseInt(location.search.replace(/.*tabId=(\d+).*/, '$1'));
 const filtering = location.search.replace(/.*filtering=(true|false).*/, '$1');
 const pattern = filtering === 'true'
-                ? window.prompt(chrome.i18n.getMessage('askPattern'))
-                : null;
+  ? window.prompt(chrome.i18n.getMessage('askPattern'))
+  : null;
 const filteringDomains = location
   .search.replace(/.*filteringDomains=(true|false).*/, '$1') === 'true'
   ? true
   : false;
+const onlyDomains = location.search.replace(/.*onlyDomains=(true|false).*/, '$1');
 
 chrome.tabs.sendMessage(tabId, {action: 'extract'}, links => {
-  handler(links, pattern);
+  handler(links, pattern, onlyDomains);
 });
 
 // Localization.
@@ -29,10 +30,11 @@ chrome.tabs.sendMessage(tabId, {action: 'extract'}, links => {
 
 /**
  * @function handler
- * @param {array} urls -- Array of links.
+ * @param links
  * @param {string} pattern -- Pattern for filtering.
+ * @param onlyDomains
  */
-function handler(links, pattern) {
+function handler(links, pattern, onlyDomains) {
   if (chrome.runtime.lastError) {
     return window.alert(chrome.runtime.lastError);
   }
@@ -42,7 +44,7 @@ function handler(links, pattern) {
   // Remove duplicate, sorting of links.
   const items = [...(new Set(resLinks))].sort();
   const re = pattern ? new RegExp(pattern, 'g') : null;
-  const added = items.filter(link => addNodes(link, containerLinks, re));
+  const added = items.filter(link => addNodes(link, containerLinks, re, onlyDomains));
 
   if (!added.length) {
     return message.dataset.content = chrome.i18n.getMessage('noMatches');
@@ -50,20 +52,25 @@ function handler(links, pattern) {
   // Extract base URL from link, remove duplicate, sorting of domains.
   const domains = [...(new Set(added.map(link => getBaseURL(link))))].sort();
   const reDomains = filteringDomains ? re : null;
-  domains.forEach(domain => addNodes(domain, containerDomains, reDomains));
+  domains.forEach(domain => addNodes(domain, containerDomains, reDomains), onlyDomains);
 };
 
 /**
  * Add nodes to container.
  *
  * @function addNodes
- * @param {string} link
+ * @param url
  * @param {Node} container
  * @param {object|null} re -- Regular Expression pattern.
+ * @param onlyDomains
  * @return {boolean} -- Whether link added into document.
  */
-function addNodes(url, container, re) {
+function addNodes(url, container, re, onlyDomains) {
   if (re && !url.match(re)) return false;
+
+  if(onlyDomains === 'true' && container === containerLinks) {
+    return true;
+  }
 
   const br = document.createElement('br');
   const a = document.createElement('a');
