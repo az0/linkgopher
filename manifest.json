@@ -1,7 +1,7 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "__MSG_extensionName__",
-  "version": "2.4.4",
+  "version": "2.4.5",
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
   "homepage_url": "https://sites.google.com/site/linkgopher/",
@@ -19,14 +19,20 @@
     }
   },
 
-  "permissions": [
-    "tabs",
-    "<all_urls>"
+  "host_permissions":[
+    "*://*/*"
   ],
 
-  "browser_action": {
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+
+  "action": {
     "default_icon": "icons/link-gopher-32.png",
     "default_title": "__MSG_extensionName__",
     "default_popup": "popup/popup.html"
-  }
+  },
+
+  "content_security_policy": {}
 }
