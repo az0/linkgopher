@@ -19,6 +19,11 @@
     "description": "none"
   },
 
+  "nolinks": {
+    "message": "Нет ссылок",
+    "description": "none"
+  },
+
   "links": {
     "message": "Ссылки",
     "description": "none"

@@ -33,14 +33,19 @@ chrome.tabs.sendMessage(tabId, {action: 'extract'}, links => {
  * @param {string} pattern -- Pattern for filtering.
  */
 function handler(links, pattern) {
+  if (!links) {
+    return message.dataset.content = chrome.i18n.getMessage('noLinks');
+  }
+
   if (chrome.runtime.lastError) {
     return window.alert(chrome.runtime.lastError);
   }
 
   // To filter links like: javascript:void(0)
-  const resLinks = links.filter(link => link.lastIndexOf('://', 10) > 0);
-  // Remove duplicate, sorting of links.
-  const items = [...(new Set(resLinks))].sort();
+  const resLinks = links.filter(link => link['href'].lastIndexOf('://', 10) > 0);
+  // Remove duplicate of links, sorting of links.
+  const items = [...(new Set(resLinks.filter((resLinks, index, self) => self.findIndex(link => link['href'] === resLinks['href']) === index)))]
+                .sort(function(a,b){ return a['href'].localeCompare(b['href']); });
   const re = pattern ? new RegExp(pattern, 'g') : null;
   const added = items.filter(link => addNodes(link, containerLinks, re));
 
@@ -48,7 +53,7 @@ function handler(links, pattern) {
     return message.dataset.content = chrome.i18n.getMessage('noMatches');
   }
   // Extract base URL from link, remove duplicate, sorting of domains.
-  const domains = [...(new Set(added.map(link => getBaseURL(link))))].sort();
+  const domains = [...(new Set(added.map(link => getBaseURL(link['href']))))].sort();
   const reDomains = filteringDomains ? re : null;
   domains.forEach(domain => addNodes(domain, containerDomains, reDomains));
 };
@@ -63,12 +68,25 @@ function handler(links, pattern) {
  * @return {boolean} -- Whether link added into document.
  */
 function addNodes(url, container, re) {
-  if (re && !url.match(re)) return false;
+  if (typeof(url) == "string") {
+    // filteringDomains
+    if (re && !url.match(re)) return false;
+  } else {
+    if (re && !(url['href'].match(re) ||
+               url['text'].match(re))) return false;
+  }
 
   const br = document.createElement('br');
   const a = document.createElement('a');
-  a.href = url;
-  a.innerText = url;
+  if (typeof(url) == "string") {
+    // filteringDomains
+    a.href = url;
+    a.innerText = url;
+  } else {
+    a.href = url['href'];
+    a.innerText = url['href'];
+    a.title = url['text'];
+  }
   container.appendChild(a);
   container.appendChild(br);
 
