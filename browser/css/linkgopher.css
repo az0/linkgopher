@@ -2,22 +2,34 @@
 #domains:not(:empty)::before {
   content: attr(data-content);
   display: block;
-  font-weight: bold;
   margin-bottom: 1em;
+  color:white;  
+}
+
+#links {
+  margin-top: 1em;
+  border-style: double;
+  background: #171414;
 }
 
 #domains {
-  margin-top: 2em;
+  margin-top: 1em;
+  border-style: double;
+  background: #171414;
 }
 
 #message::before {
   content: attr(data-content);
+  border-style: double
 }
 
 #links:not(:empty) ~ #message,
 #domains:not(:empty) ~ #message {
   display: none;
+  position: fixed;
 }
-.results {
-  background: #282828
+
+body {
+  background: #1a1a1a;
+  font-size: medium;
 }
