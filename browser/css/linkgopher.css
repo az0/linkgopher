@@ -1,22 +1,23 @@
 #links:not(:empty)::before,
 #domains:not(:empty)::before {
-  content: attr(data-content); 
-  display: block;
-  margin-bottom: 1em;
-  color:white;
+  content: attr(data-content);
+  display: flow;
+  flex-wrap: wrap;
+  color: white;
   text-align: center;
   border-spacing: 3px;
-}
+  align-content: center;
+  }
 
 #links {
   display: flow;
   margin-top: 1em;
-  border-style: none;
-  background: #00000030;
+  border-style: double;
+  background: #2c262600;
 }
 
 #domains {
-  display: block;
+  display: flow;
   margin-top: 1em;
   border-style: double;
   background: #1e151596;
@@ -24,16 +25,19 @@
 
 #message::before {
   content: attr(data-content);
-  border-style: double;
-  display: block; 
+  border-style: none;
+  align-content: center;
 }
 
 #links:not(:empty) ~ #message,
 #domains:not(:empty) ~ #message {
   display: none;
+  align-content: center;
 }
 
 body {
   background: #1a1a1a;
   font-size: medium;
+  color: #7cacf8;
+  align-content: center;
 }
