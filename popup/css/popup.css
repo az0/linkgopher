@@ -1,5 +1,5 @@
 .container {
-  display: flex;
+  flex-wrap: nowrap;
   flex-direction: column;
 }
 
@@ -8,4 +8,5 @@
 }
 .container > button:not(:last-child) {
   margin-bottom: .5em;
+  box-shadow: darkgray
 }
