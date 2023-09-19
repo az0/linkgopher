@@ -1,7 +1,6 @@
 .container {
   display: flex-wrap;
   flex-direction: column;
-  border-block-style: inherit
 }
 
 .container > button {
@@ -9,5 +8,4 @@
 }
 .container > button:not(:last-child) {
   margin-bottom: .5em;
-  shape-rendering: optimizespeed
 }
