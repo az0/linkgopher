@@ -1,32 +1,36 @@
 #links:not(:empty)::before,
 #domains:not(:empty)::before {
-  content: attr(data-content);
+  content: attr(data-content); 
   display: block;
   margin-bottom: 1em;
-  color:white;  
+  color:white;
+  text-align: center;
+  border-spacing: 3px;
 }
 
 #links {
+  display: flow;
   margin-top: 1em;
-  border-style: double;
-  background: #171414;
+  border-style: none;
+  background: #00000030;
 }
 
 #domains {
+  display: block;
   margin-top: 1em;
   border-style: double;
-  background: #171414;
+  background: #1e151596;
 }
 
 #message::before {
   content: attr(data-content);
-  border-style: double
+  border-style: double;
+  display: block; 
 }
 
 #links:not(:empty) ~ #message,
 #domains:not(:empty) ~ #message {
   display: none;
-  position: fixed;
 }
 
 body {
