@@ -4,13 +4,13 @@
   content: attr(data-content);
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  color: #f3f3f3;
+  flex-wrap: nowrap;
+  color: #ffffff;
   text-align:center;
 }
 
 #links {
-  display: flex;
+  display: flow;
   flex-wrap: nowrap;
   flex-direction: column;
   margin-top: 1em;
@@ -42,7 +42,7 @@
 
 #links:not(:empty) ~ #message,
 #domains:not(:empty) ~ #message {
-  display: none;
+  display: flex;
   align-content: center;
 }
 
@@ -60,11 +60,6 @@ body {
   color: #333333;
   box-shadow: chocolate;
   font-family: 'Exo 2', sans-serif;
-}
-
-.content {
-  display: grid;
-  padding: 5pt;
 }
 
 /* Additional styles for alternating background colors and hover effects */
@@ -113,7 +108,7 @@ body {
 
 /* Target each link in the links section */
 #links > a {
-    display: flex;  /* Makes the link occupy the entire width */
+    display:block;  /* Makes the link occupy the entire width */
     flex-wrap: nowrap;
     padding: .1px;    /* Some padding for visual space */
     position: relative;  /* Needed for positioning the number */
@@ -189,13 +184,6 @@ a:visited {
     background-color: #444444;  /* A shade lighter than the darker grey */
 }
 
-.footer i {
-    font-size: 48px;
-    color: white;
-    opacity: 0.8;  /* Ensuring icons are slightly transparent */
-    margin-right: 8px;  /* Adding some space between the icon and the link text */
-}
-
 #domains > div:nth-child(odd) {
     background-color: #1a1a1a;  /* Dark grey, almost black */
 }
@@ -206,13 +194,4 @@ a:visited {
 
 #domains > div:hover {
     background-color: #444444;  /* A shade lighter than the darker grey */
-}
-
-.footer i {
-    font-size: 32px;  /* Reduced size */
-    color: white;
-    opacity: 0.8;
-    margin-right: 8px;
-    display: block;  /* Displaying the icon above the link text */
-    text-align: center;  /* Centering the icon */
 }
