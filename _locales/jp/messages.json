@@ -1,0 +1,41 @@
+{
+	"askPattern": {
+		"message": "リンク内で検索する文字列を入力して下さい。この文字列が無いリンクは無視されます。",
+		"description": "none"
+	},
+
+	"pleaseWait": {
+		"message": "お待ち下さい...",
+		"description": "none"
+	},
+
+	"links": {
+		"message": "リンク先",
+		"description": "none"
+	},
+
+	"domains": {
+		"message": "ドメイン",
+		"description": "none"
+	},
+
+	"noMatches": {
+		"message": "一致するものはありません。",
+		"description": "none"
+	},
+
+	"extractAll": {
+		"message": "すべてのリンクを抽出する",
+		"description": "none"
+	},
+
+	"extractSome": {
+		"message": "フィルタによるリンクの抽出",
+		"description": "none"
+	},
+
+	"aboutLinkGopher": {
+		"message": "Link Gopher について",
+		"description": "none"
+	}
+}
