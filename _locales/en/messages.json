@@ -39,6 +39,11 @@
     "description": "none"
   },
 
+  "extractDomains": {
+    "message": "Extract Only Domains",
+    "description": "none"
+  },
+
   "extractSome": {
     "message": "Extract Links by Filter",
     "description": "none"
