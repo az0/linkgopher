@@ -42,7 +42,7 @@ function handler(filtering = false, onlyDomains = false) {
         `tabId=${tabId}&filtering=${filtering}&onlyDomains=${onlyDomains}`;
       return openTab(url);
     })
-    .catch(error => window.alert(error));
+     .catch(error => window.alert(error.message));
 };
 
 /**
