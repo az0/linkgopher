@@ -15,7 +15,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "linkgopher@oooninja.com",
-      "strict_min_version": "45.0"
+      "strict_min_version": "109.0"
     }
   },
 
