@@ -38,7 +38,7 @@ function handler(filtering = false, onlyDomains = false) {
   return getCurrentTab()
     .then(items => { tabId = items[0].id; return injectScript(tabId); })
     .then(item => {
-      const url = `${chrome.extension.getURL('browser/linkgopher.html')}?` +
+      const url = `${chrome.runtime.getURL('browser/linkgopher.html')}?` +
         `tabId=${tabId}&filtering=${filtering}&onlyDomains=${onlyDomains}`;
       return openTab(url);
     })
@@ -83,12 +83,13 @@ function openTab(url) {
  */
 function injectScript(tabId, file = '/content-script.js') {
   return new Promise((res, rej) => {
-    const details = {
-      file,
-      runAt: 'document_start'
-    };
-
-    chrome.tabs.executeScript(tabId, details, item => passNext(item, res, rej));
+    chrome.scripting.executeScript(
+      { 
+        target: {tabId: tabId}, 
+        files: [file]
+      },
+        item => passNext(item, res, rej)
+      );
   });
 };
 

@@ -6,7 +6,7 @@ Link Gopher is a web browser extension: it extracts all links from web page, sor
 To download and install the latest release:
 
 * [Link Gopher on Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/link-gopher/) for Firefox
-* [Link Gopher on Chrome Web Store](https://chrome.google.com/webstore/detail/bpjdkodgnbfalgghnbeggfbfjpcfamkf/publish-accepted?hl=en-US&gl=US) for Google Chrome
+* [Link Gopher on Chrome Web Store](https://chrome.google.com/webstore/detail/link-gopher/bpjdkodgnbfalgghnbeggfbfjpcfamkf) for Google Chrome
 
 ## Documentation
 There is [brief documentation](https://sites.google.com/site/linkgopher/Home)
