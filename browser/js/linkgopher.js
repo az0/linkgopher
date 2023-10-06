@@ -1,3 +1,5 @@
+
+document.addEventListener("DOMContentLoaded", function() {
 'use strict';
 const containerLinks = document.getElementById('links');
 const containerDomains = document.getElementById('domains');
@@ -99,3 +101,129 @@ function getBaseURL(link) {
     return `http://${result[2] || result[3]}/`;
   }
 };
+
+// Adjusting the saveThemePreference function to toggle the "light-mode" class on the html element
+function saveThemePreference() {
+    const themeSwitch = document.getElementById('theme-switch');
+    const htmlElement = document.documentElement;
+
+    if (themeSwitch.checked) {
+        localStorage.setItem('linkgopher-theme', 'light');
+        htmlElement.classList.add('light-mode');
+    } else {
+        localStorage.setItem('linkgopher-theme', 'dark');
+        htmlElement.classList.remove('light-mode');
+    }
+}
+
+// Adjusting the loadThemePreference function to set the "light-mode" class on the html element
+function loadThemePreference() {
+    const themeSwitch = document.getElementById('theme-switch');
+    const htmlElement = document.documentElement;
+    const userThemePreference = localStorage.getItem('linkgopher-theme');
+
+    if (userThemePreference === 'light') {
+        themeSwitch.checked = true;
+        htmlElement.classList.add('light-mode');
+    } else {
+        htmlElement.classList.remove('light-mode');
+    }
+}
+
+function applyThemeStyles() {
+    const themeSwitch = document.getElementById('theme-switch');
+    const headerElement = document.querySelector('.header');
+    const bodyElement = document.body;
+    const linksElement = document.getElementById('links');
+    const domainsElement = document.getElementById('domains');
+    const linksDivs = document.querySelectorAll('#links div');
+    const domainsDivs = document.querySelectorAll('#domains div');
+    const footerElement = document.querySelector('.footer');
+    const anchorElements = document.querySelectorAll('a');
+
+    if (themeSwitch.checked) {
+        // Apply light mode styles
+        headerElement.style.backgroundColor = "#ddd";
+        bodyElement.style.backgroundColor = "#f5f5f5";
+        bodyElement.style.color = "#000";
+        linksElement.style.backgroundColor = "#ffffff";
+        domainsElement.style.backgroundColor = "#ffffff";
+
+        linksDivs.forEach((div, index) => {
+            div.style.backgroundColor = (index % 2 === 0) ? "#e6e6e6" : "#f0f0f0";
+        });
+
+        domainsDivs.forEach((div, index) => {
+            div.style.backgroundColor = (index % 2 === 0) ? "#e6e6e6" : "#f0f0f0";
+        });
+
+        anchorElements.forEach(anchor => {
+            anchor.style.color = "#555";
+        });
+
+        footerElement.style.backgroundColor = "#ddd";
+        footerElement.style.borderTop = "double 2px #555";
+    } else {
+        // Reset styles to default (dark mode)
+        headerElement.style.backgroundColor = "";
+        bodyElement.style.backgroundColor = "";
+        bodyElement.style.color = "";
+        linksElement.style.backgroundColor = "";
+        domainsElement.style.backgroundColor = "";
+
+        linksDivs.forEach(div => {
+            div.style.backgroundColor = "";
+        });
+
+        domainsDivs.forEach(div => {
+            div.style.backgroundColor = "";
+        });
+
+        anchorElements.forEach(anchor => {
+            anchor.style.color = "";
+        });
+
+        footerElement.style.backgroundColor = "";
+        footerElement.style.borderTop = "";
+    }
+}
+
+// Call the function initially to set the correct theme on page load
+// applyThemeStyles();
+
+document.getElementById('theme-switch').addEventListener('click', applyThemeStyles);
+
+// Function to toggle the theme and switch the logo
+function toggleTheme() {
+    const bodyElement = document.body;
+    const logoElement = document.getElementById('logo-section').querySelector('img');
+    const buttonElement = document.querySelector('.toggleButton_MMFG');
+    const lightLogo = 'assets/logo-transparent-48.png';
+    const darkLogo = 'assets/logo-black-48.png';
+
+    if (bodyElement.classList.contains('light-mode')) {
+        bodyElement.classList.remove('light-mode');
+        logoElement.src = darkLogo;
+        buttonElement.setAttribute('aria-label', 'Switch to light mode');
+        buttonElement.setAttribute('title', 'Switch to light mode');
+    } else {
+        bodyElement.classList.add('light-mode');
+        logoElement.src = lightLogo;
+        buttonElement.setAttribute('aria-label', 'Switch to dark mode');
+        buttonElement.setAttribute('title', 'Switch to dark mode');
+    }
+} 
+
+// Attach the event listener to the toggle button
+const themeToggleButton = document.querySelector('.toggleButton_MMFG');
+if (themeToggleButton) {
+    themeToggleButton.addEventListener('click', toggleTheme);
+}
+
+
+document.querySelector(".colorModeToggle").addEventListener("click", function() {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+})
+
+});

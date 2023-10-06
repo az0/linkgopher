@@ -1,15 +1,87 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Link Gopher</title>
-    <link rel="stylesheet" href="css/linkgopher.css">
-  </head>
-  <body>
-    <div id="links" data-content="Links"></div>
-    <div id="domains" data-content="Domains"></div>
-    <h2 id="message" data-content="Please wait..."></h2>
 
-    <script src="js/linkgopher.js" charset="utf-8"></script>
-  </body>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>
+   Link Gopher
+  </title>
+<link href="css/linkgopher.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,600;1,200;1,300;1,400;1,600&amp;family=Rajdhani:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    .colorModeToggle {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .lightToggleIcon, .darkToggleIcon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .lightToggleIcon {
+        display: block;  /* Initially, sun should be visible */
+    }
+
+    .dark-mode .lightToggleIcon {
+        display: block;  /* Sun should be visible in dark mode */
+    }
+
+    .darkToggleIcon {
+        display: none;  /* Moon should be hidden initially */
+    }
+
+    .dark-mode .darkToggleIcon {
+        display: none;  /* Moon should be hidden in dark mode */
+    }
+</style>
+</head>
+<body class="light-mode">
+<div class="colorModeToggle clean-btn toggleButton_MMFG">
+<img id="theme-switch" alt="Toggle Dark/Light Mode" src="assets/circle-half-stroke.png" title="Toggle Dark/Light Mode">
+</div>
+
+<div class="header" id="logo-section">
+<img alt="Black Logo" src="assets/logo-black-48.png" style="width: 48px;">
+   Link Gopher
+   
+</div>
+
+<div data-content="Links" id="links">
+</div>
+<div data-content="Domains" id="domains">
+</div>
+<div class="colorModeToggle" onclick="myFunction()">
+</div>
+<h2 data-content="Please wait..." id="message">
+</h2>
+<script charset="utf-8" src="js/linkgopher.js">
+</script>
+<center>
+<div class="footer">
+<a alt="Official Site" href="https://sites.google.com/site/linkgopher/" target="_blank">
+   Homepage
+  </a>
+<a alt="Documentation" href="https://sites.google.com/site/linkgopher/documentation" target="_blank">
+   Documentation
+  </a>
+<a alt="GitHub" href="https://github.com/az0/linkgopher" target="_blank">
+   Github
+  </a>
+<br/>
+<a href="https://www.google.com/url?q=https%3A%2F%2Fwww.paypal.com%2Fcgi-bin%2Fwebscr%3Fcmd%3D_donations%26business%3D3GVA3MW5Z5CPW%26lc%3DUS%26item_name%3DLink%2520Gopher%26cn%3DAdd%2520special%2520instructions%2520to%2520the%2520seller%26no_shipping%3D2%26currency_code%3DUSD%26bn%3DPP%252dDonationsBF%253abtn_donate_LG%252egif%253aNonHosted&amp;sa=D&amp;sntz=1&amp;usg=AOvVaw31tEwh3Vyq7fH9KD396t2x" target="_blank">
+<img alt="Donate" src="assets/Donate.png" style="width:100px;"/>
+</a>
+</div>
+</center>
+</body>
+    
 </html>
