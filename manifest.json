@@ -7,9 +7,9 @@
   "homepage_url": "https://sites.google.com/site/linkgopher/",
 
   "icons": {
-    "16": "icons/logo-black-16.png",
-    "48": "icons/logo-black-48.png",
-    "128": "icons/logo-black-128.png"
+    "16": "browser/assets/logo-black-16.png",
+    "48": "browser/assets/logo-black-48.png",
+    "128": "browser/assets/logo-black-128.png"
   },
 
   "browser_specific_settings": {
