@@ -28,7 +28,7 @@
   ],
 
   "action": {
-    "default_icon": "icons/logo-black-128.png",
+    "default_icon": "browser/assets/logo-black-128.png",
     "default_title": "__MSG_extensionName__",
     "default_popup": "popup/popup.html"
   },
