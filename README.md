@@ -2,22 +2,6 @@
 
 Link Gopher is a web browser extension: it extracts all links from web page, sorts them, removes duplicates, and displays them in a new tab for inspection or copy and paste into other systems.
 
-# Screenshots
-
-Popup
-
-![Screenshot 2023-09-21 012207](https://github.com/Labryn/linkgopher/assets/2816895/dbd2ef4c-3a2d-4bb7-b3ab-b69e7fffeb51)
-
-Results with dark theme
-
-![Screenshot 2023-09-21 042240](https://github.com/Labryn/linkgopher/assets/2816895/2fcc472e-81fe-4e40-9242-8da03ede91eb)
-
-Results with light theme
-
-![Screenshot 2023-09-24 071507](https://github.com/Labryn/linkgopher/assets/2816895/76a49f07-f419-48bc-a273-a3fd463cad3e)
-
-The new visual themes are thanks to Drew Hester.
-
 ## Download
 To download and install the latest release:
 
@@ -28,6 +12,6 @@ To download and install the latest release:
 There is [brief documentation](https://sites.google.com/site/linkgopher/Home)
 
 ## License
-Copyright (c) 2008, 2009, 2014, 2017, 2021, 2023 by Andrew Ziem. All rights reserved.
+Copyright (c) 2008, 2009, 2014, 2017, 2021 by Andrew Ziem. All rights reserved.
 
 Licensed under the [GNU General Public License version 3](https://www.gnu.org/licenses/gpl-3.0.en.html) or later

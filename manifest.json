@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extensionName__",
-  "version": "2.6.1",
+  "version": "2.5.0",
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
   "homepage_url": "https://sites.google.com/site/linkgopher/",
 
   "icons": {
-    "16": "browser/assets/logo-black-16.png",
-    "48": "browser/assets/logo-black-48.png",
-    "128": "browser/assets/logo-black-128.png"
+    "16": "icons/link-gopher-16.png",
+    "32": "icons/link-gopher-32.png",
+    "64": "icons/link-gopher-64.png"
   },
 
   "browser_specific_settings": {
@@ -28,7 +28,7 @@
   ],
 
   "action": {
-    "default_icon": "browser/assets/logo-black-128.png",
+    "default_icon": "icons/link-gopher-32.png",
     "default_title": "__MSG_extensionName__",
     "default_popup": "popup/popup.html"
   },

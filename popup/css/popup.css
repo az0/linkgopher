@@ -1,30 +1,12 @@
-body {
-  background: #222;
-  margin: 1em;
-  outline-style: double;
-  shape-outside: border-box;
-  outline-width: 5px;
-}
 .container {
-  width: 250px;
-  text-align: center;
-  color: white;
-  margin-bottom: 0%;
-
-}
-
-.header {
-  font-family: 'Rajdhani', sans-serif;
-  display: flow;
-  font-size: xx-large;
-  font-weight: 500;
+  flex-wrap: nowrap;
+  flex-direction: column;
 }
 
 .container > button {
-  width: 100%;
-  padding: .4pc;
-  box-shadow:black;
+  white-space: nowrap;
 }
 .container > button:not(:last-child) {
-  box-shadow: #2f3245
+  margin-bottom: .5em;
+  box-shadow: darkgray
 }
