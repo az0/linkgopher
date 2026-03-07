@@ -29,5 +29,5 @@ function extractLinks() {
     links.push(decodeURI(document.links[index].href));
   }
 
-  return links.length ? links : null;
+  return links;
 };

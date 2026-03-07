@@ -23,8 +23,9 @@ document.getElementById('about-linkgopher').addEventListener('click', event => {
   {id: 'extract-some', messageId: 'extractSome'},
   {id: 'about-linkgopher', messageId: 'aboutLinkGopher'}
 ].forEach(item => {
-  const container = document.getElementById(item.id);
-  container.innerText = chrome.i18n.getMessage(item.messageId);
+  const btn = document.getElementById(item.id);
+  const label = btn.querySelector('.btn-label');
+  if (label) label.innerText = chrome.i18n.getMessage(item.messageId);
 })
 
 /**

@@ -2,6 +2,7 @@
 const containerLinks = document.getElementById('links');
 const containerDomains = document.getElementById('domains');
 const message = document.getElementById('message');
+const searchInput = document.getElementById('search-input');
 const reBaseURL = /(^\w+:\/\/[^\/]+)|(^[A-Za-z0-9.-]+)\/|(^[A-Za-z0-9.-]+$)/;
 const tabId = parseInt(location.search.replace(/.*tabId=(\d+).*/, '$1'));
 const filtering = location.search.replace(/.*filtering=(true|false).*/, '$1');
@@ -15,7 +16,7 @@ const filteringDomains = location
 const onlyDomains = location.search.replace(/.*onlyDomains=(true|false).*/, '$1');
 
 chrome.tabs.sendMessage(tabId, {action: 'extract'}, links => {
-  handler(links, pattern, onlyDomains);
+  handler(links || [], pattern, onlyDomains);
 });
 
 // Localization.
@@ -30,7 +31,7 @@ chrome.tabs.sendMessage(tabId, {action: 'extract'}, links => {
 
 /**
  * @function handler
- * @param links
+ * @param {Array} links
  * @param {string} pattern -- Pattern for filtering.
  * @param onlyDomains
  */
@@ -39,21 +40,94 @@ function handler(links, pattern, onlyDomains) {
     return window.alert(chrome.runtime.lastError);
   }
 
-  // To filter links like: javascript:void(0)
+  // Filter out javascript:void(0) style non-URL links.
   const resLinks = links.filter(link => link.lastIndexOf('://', 10) > 0);
-  // Remove duplicate, sorting of links.
+  // Remove duplicates, sort.
   const items = [...(new Set(resLinks))].sort();
   const re = pattern ? new RegExp(pattern, 'g') : null;
   const added = items.filter(link => addNodes(link, containerLinks, re, onlyDomains));
 
   if (!added.length) {
-    return message.dataset.content = chrome.i18n.getMessage('noMatches');
+    message.dataset.content = chrome.i18n.getMessage('noMatches');
+    updateToolbar([], []);
+    return;
   }
-  // Extract base URL from link, remove duplicate, sorting of domains.
-  const domains = [...(new Set(added.map(link => getBaseURL(link))))].sort();
+
+  // Extract base URL, dedupe, sort.
+  const domains = [...(new Set(added.map(link => getBaseURL(link)).filter(Boolean)))].sort();
   const reDomains = filteringDomains ? re : null;
-  domains.forEach(domain => addNodes(domain, containerDomains, reDomains), onlyDomains);
+  domains.forEach(domain => addNodes(domain, containerDomains, reDomains, onlyDomains));
+
+  updateCounts(added.length, domains.length);
+  updateToolbar(added, domains);
+  initSearch();
 };
+
+/**
+ * Update section header counts.
+ */
+function updateCounts(linkCount, domainCount) {
+  const linkLabel = chrome.i18n.getMessage('links') || 'Links';
+  const domainLabel = chrome.i18n.getMessage('domains') || 'Domains';
+  containerLinks.dataset.content = `${linkLabel} (${linkCount})`;
+  containerDomains.dataset.content = `${domainLabel} (${domainCount})`;
+}
+
+/**
+ * Wire up toolbar copy/download buttons.
+ */
+function updateToolbar(linkList, domainList) {
+  document.getElementById('copy-links').addEventListener('click', () => {
+    copyToClipboard(linkList.join('\n'), document.getElementById('copy-links'));
+  });
+
+  document.getElementById('copy-domains').addEventListener('click', () => {
+    copyToClipboard(domainList.join('\n'), document.getElementById('copy-domains'));
+  });
+
+  document.getElementById('download-links').addEventListener('click', () => {
+    const content = ['=== Links ===', ...linkList, '', '=== Domains ===', ...domainList].join('\n');
+    downloadFile(content, 'links.txt');
+  });
+}
+
+/**
+ * Copy text to clipboard, briefly show feedback on button.
+ */
+function copyToClipboard(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.innerHTML;
+    btn.innerHTML = '&#10003; Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = original; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
+/**
+ * Trigger a .txt file download.
+ */
+function downloadFile(content, filename) {
+  const blob = new Blob([content], {type: 'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/**
+ * Live search filter across all rendered link anchors.
+ */
+function initSearch() {
+  searchInput.addEventListener('input', () => {
+    const term = searchInput.value.toLowerCase();
+    document.querySelectorAll('#links a, #domains a').forEach(a => {
+      const visible = !term || a.href.toLowerCase().includes(term);
+      a.style.display = visible ? '' : 'none';
+      a.nextSibling && (a.nextSibling.style && (a.nextSibling.style.display = visible ? '' : 'none'));
+    });
+  });
+}
 
 /**
  * Add nodes to container.
@@ -63,21 +137,20 @@ function handler(links, pattern, onlyDomains) {
  * @param {Node} container
  * @param {object|null} re -- Regular Expression pattern.
  * @param onlyDomains
- * @return {boolean} -- Whether link added into document.
+ * @return {boolean} -- Whether link was added into document.
  */
 function addNodes(url, container, re, onlyDomains) {
   if (re && !url.match(re)) return false;
 
-  if(onlyDomains === 'true' && container === containerLinks) {
+  if (onlyDomains === 'true' && container === containerLinks) {
     return true;
   }
 
-  const br = document.createElement('br');
   const a = document.createElement('a');
   a.href = url;
   a.innerText = url;
   container.appendChild(a);
-  container.appendChild(br);
+  container.appendChild(document.createElement('br'));
 
   return true;
 };

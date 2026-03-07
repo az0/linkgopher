@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="css/linkgopher.css">
   </head>
   <body>
+    <div id="toolbar">
+      <input id="search-input" type="text" placeholder="Filter displayed links..." autocomplete="off" />
+      <button id="copy-links" class="toolbar-btn" title="Copy all links">&#128203; Copy Links</button>
+      <button id="copy-domains" class="toolbar-btn" title="Copy all domains">&#127760; Copy Domains</button>
+      <button id="download-links" class="toolbar-btn" title="Download as .txt">&#8659; Download</button>
+    </div>
+
     <div id="links" data-content="Links"></div>
     <div id="domains" data-content="Domains"></div>
     <h2 id="message" data-content="Please wait..."></h2>
