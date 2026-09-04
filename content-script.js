@@ -26,7 +26,12 @@ function extractLinks() {
   const links = [];
 
   for (let index = 0; index < document.links.length; index++) {
-    links.push(decodeURI(document.links[index].href));
+    const href = document.links[index].href;
+    try {
+      links.push(decodeURI(href));
+    } catch (e) {
+      links.push(href);
+    }
   }
 
   return links.length ? links : null;

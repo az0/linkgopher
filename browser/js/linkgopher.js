@@ -14,9 +14,44 @@ const filteringDomains = location
   : false;
 const onlyDomains = location.search.replace(/.*onlyDomains=(true|false).*/, '$1');
 
-chrome.tabs.sendMessage(tabId, {action: 'extract'}, links => {
-  handler(links, pattern, onlyDomains);
-});
+chrome.scripting.executeScript(
+  {
+    target: {tabId, allFrames: true},
+    func: extractLinksInPage
+  },
+  results => {
+    if (chrome.runtime.lastError) {
+      return window.alert(chrome.runtime.lastError);
+    }
+    const links = (results || [])
+      .map(item => item.result)
+      .filter(result => result && result.length)
+      .flat();
+    handler(links.length ? links : null, pattern, onlyDomains);
+  }
+);
+
+/**
+ * Extract links from the current document.
+ *
+ * Runs in the page context via chrome.scripting.executeScript, so it must
+ * not reference any variables from the extension scope.
+ *
+ * @function extractLinksInPage
+ * @return {string[]|null}
+ */
+function extractLinksInPage() {
+  const links = [];
+  for (let index = 0; index < document.links.length; index++) {
+    const href = document.links[index].href;
+    try {
+      links.push(decodeURI(href));
+    } catch (e) {
+      links.push(href);
+    }
+  }
+  return links.length ? links : null;
+}
 
 // Localization.
 [
