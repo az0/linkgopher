@@ -1,0 +1,56 @@
+{
+  "extensionName": {
+    "message": "Link Gopher",
+    "description": "none"
+  },
+
+  "extensionDescription": {
+    "message": "ویب صفحات سے لنکس نکالتا اور مرتب کرتا ہے",
+    "description": "none"
+  },
+
+  "askPattern": {
+    "message": "لنک کے اندر تلاش کرنے کے لیے حروف کی ایک تار درج کریں۔ اس تار کے بغیر لنکس کو نظر انداز کر دیا جائے گا۔",
+    "description": "none"
+  },
+
+  "pleaseWait": {
+    "message": "براہ کرم انتظار کریں...",
+    "description": "none"
+  },
+
+  "links": {
+    "message": "لنکس",
+    "description": "none"
+  },
+
+  "domains": {
+    "message": "ڈومینز",
+    "description": "none"
+  },
+
+  "noMatches": {
+    "message": "کوئی مماثلت نہیں",
+    "description": "none"
+  },
+
+  "extractAll": {
+    "message": "تمام لنکس نکالیں",
+    "description": "none"
+  },
+
+  "extractDomains": {
+    "message": "صرف ڈومینز نکالیں",
+    "description": "none"
+  },
+
+  "extractSome": {
+    "message": "فلٹر کے ذریعے لنکس نکالیں",
+    "description": "none"
+  },
+
+  "aboutLinkGopher": {
+    "message": "Link Gopher کے بارے میں",
+    "description": "none"
+  }
+}

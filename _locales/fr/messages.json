@@ -1,0 +1,56 @@
+{
+  "extensionName": {
+    "message": "Link Gopher",
+    "description": "none"
+  },
+
+  "extensionDescription": {
+    "message": "Extrait et trie les liens des pages web",
+    "description": "none"
+  },
+
+  "askPattern": {
+    "message": "Entrez une chaîne de caractères à rechercher dans le lien. Les liens ne contenant pas cette chaîne seront ignorés.",
+    "description": "none"
+  },
+
+  "pleaseWait": {
+    "message": "Veuillez patienter...",
+    "description": "none"
+  },
+
+  "links": {
+    "message": "Liens",
+    "description": "none"
+  },
+
+  "domains": {
+    "message": "Domaines",
+    "description": "none"
+  },
+
+  "noMatches": {
+    "message": "Aucune correspondance",
+    "description": "none"
+  },
+
+  "extractAll": {
+    "message": "Extraire tous les liens",
+    "description": "none"
+  },
+
+  "extractDomains": {
+    "message": "Extraire uniquement les domaines",
+    "description": "none"
+  },
+
+  "extractSome": {
+    "message": "Extraire les liens par filtre",
+    "description": "none"
+  },
+
+  "aboutLinkGopher": {
+    "message": "À propos de Link Gopher",
+    "description": "none"
+  }
+}
