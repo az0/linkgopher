@@ -24,15 +24,32 @@ function onMessage(message, sender, sendResponse) {
  */
 function extractLinks() {
   const links = [];
-
-  for (let index = 0; index < document.links.length; index++) {
-    const href = document.links[index].href;
+  const push = url => {
+    if (!url) return;
     try {
-      links.push(decodeURI(href));
+      links.push(decodeURI(url));
     } catch (e) {
-      links.push(href);
+      links.push(url);
     }
-  }
+  };
+
+  // Recurse into open shadow roots so that links rendered by web
+  // components (e.g. archive.org's lit-based <app-root>) are collected.
+  // document.links and querySelectorAll do not pierce shadow boundaries.
+  // See issue #83.
+  const visit = root => {
+    root.querySelectorAll('a[href], area[href]').forEach(el => push(el.href));
+    // document.links covers only <a> and <area>; also collect embedded
+    // resources (<iframe>, <embed>, <object>) so pages that embed videos
+    // via <iframe src=".../embed/..."> report all links. See issue #85.
+    root.querySelectorAll('iframe[src], embed[src], object[data]')
+      .forEach(el => push(el.src || el.data));
+    root.querySelectorAll('*').forEach(el => {
+      if (el.shadowRoot) visit(el.shadowRoot);
+    });
+  };
+
+  visit(document);
 
   return links.length ? links : null;
 };

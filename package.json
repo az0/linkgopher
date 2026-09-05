@@ -1,0 +1,14 @@
+{
+  "name": "linkgopher",
+  "version": "2.6.3",
+  "private": true,
+  "description": "Link Gopher browser extension",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.3",
+    "vitest": "^2.1.9"
+  }
+}

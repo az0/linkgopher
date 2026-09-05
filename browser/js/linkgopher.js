@@ -27,31 +27,9 @@ chrome.scripting.executeScript(
       .map(item => item.result)
       .filter(result => result && result.length)
       .flat();
-    handler(links.length ? links : null, pattern, onlyDomains);
+    handler(links, pattern, onlyDomains);
   }
 );
-
-/**
- * Extract links from the current document.
- *
- * Runs in the page context via chrome.scripting.executeScript, so it must
- * not reference any variables from the extension scope.
- *
- * @function extractLinksInPage
- * @return {string[]|null}
- */
-function extractLinksInPage() {
-  const links = [];
-  for (let index = 0; index < document.links.length; index++) {
-    const href = document.links[index].href;
-    try {
-      links.push(decodeURI(href));
-    } catch (e) {
-      links.push(href);
-    }
-  }
-  return links.length ? links : null;
-}
 
 // Localization.
 [
@@ -75,7 +53,7 @@ function handler(links, pattern, onlyDomains) {
   }
 
   // To filter links like: javascript:void(0)
-  const resLinks = links.filter(link => link.lastIndexOf('://', 10) > 0);
+  const resLinks = (links || []).filter(link => link.lastIndexOf('://', 10) > 0);
   // Remove duplicate, sorting of links.
   const items = [...(new Set(resLinks))].sort();
   const re = pattern ? new RegExp(pattern, 'g') : null;

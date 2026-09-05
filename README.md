@@ -11,6 +11,12 @@ To download and install the latest release:
 ## Documentation
 There is [brief documentation](https://sites.google.com/site/linkgopher/Home)
 
+## Tests
+```sh
+npm install   # first time only
+npm test
+```
+
 ## License
 Copyright (c) 2008, 2009, 2014, 2017, 2021, 2023 by Andrew Ziem. All rights reserved.
 
