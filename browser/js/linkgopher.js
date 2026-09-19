@@ -56,7 +56,16 @@ function handler(links, pattern, onlyDomains) {
   const resLinks = (links || []).filter(link => link.lastIndexOf('://', 10) > 0);
   // Remove duplicate, sorting of links.
   const items = [...(new Set(resLinks))].sort();
-  const re = pattern ? new RegExp(pattern, 'g') : null;
+  // Compile the filter pattern defensively: a malformed regex typed into the
+  // filter prompt (e.g. "(", "[", "a-1") must not crash the extraction page.
+  let re = null;
+  if (pattern) {
+    try {
+      re = new RegExp(pattern, 'g');
+    } catch (e) {
+      return message.dataset.content = `Invalid filter pattern: "${pattern}"`;
+    }
+  }
   const added = items.filter(link => addNodes(link, containerLinks, re, onlyDomains));
 
   if (!added.length) {
