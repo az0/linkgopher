@@ -9,7 +9,9 @@
   "icons": {
     "16": "icons/link-gopher-16.png",
     "32": "icons/link-gopher-32.png",
-    "64": "icons/link-gopher-64.png"
+    "48": "icons/link-gopher-48.png",
+    "64": "icons/link-gopher-64.png",
+    "128": "icons/link-gopher-128.png"
   },
 
   "browser_specific_settings": {
