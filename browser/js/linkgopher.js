@@ -57,13 +57,14 @@ function handler(links, pattern, onlyDomains) {
   // Remove duplicate, sorting of links.
   const items = [...(new Set(resLinks))].sort();
   // Compile the filter pattern defensively: a malformed regex typed into the
-  // filter prompt (e.g. "(", "[", "a-1") must not crash the extraction page.
+  // filter prompt (e.g. "(", "[", "\") must not crash the extraction page.
   let re = null;
   if (pattern) {
     try {
       re = new RegExp(pattern, 'g');
-    } catch (e) {
-      return message.dataset.content = `Invalid filter pattern: "${pattern}"`;
+    } catch {
+      return message.dataset.content =
+        chrome.i18n.getMessage('invalidPattern', pattern);
     }
   }
   const added = items.filter(link => addNodes(link, containerLinks, re, onlyDomains));

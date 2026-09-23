@@ -34,6 +34,16 @@
     "description": "none"
   },
 
+  "invalidPattern": {
+    "message": "Invalid filter pattern: \"$PATTERN$\"",
+    "description": "none",
+    "placeholders": {
+      "pattern": {
+        "content": "$1"
+      }
+    }
+  },
+
   "extractAll": {
     "message": "Extract All Links",
     "description": "none"
