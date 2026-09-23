@@ -33,5 +33,7 @@
     "default_popup": "popup/popup.html"
   },
 
-  "content_security_policy": {}
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }
