@@ -34,6 +34,16 @@
     "description": "none"
   },
 
+"invalidPattern": {
+    "message": "无效的筛选器模式：\"$PATTERN$\"",
+    "description": "none",
+    "placeholders": {
+      "pattern": {
+        "content": "$1"
+      }
+    }
+  },
+
   "extractAll": {
     "message": "提取所有链接",
     "description": "none"
